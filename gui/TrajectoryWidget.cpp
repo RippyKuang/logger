@@ -88,13 +88,11 @@ QPointF TrajectoryWidget::project(double x, double y, double z) const {
   double y1 = sy * X + cy * Y;
   double z1 = Z;
   double x2 = x1;
-  double depth = cp * y1 - sp * z1;
   double up = sp * y1 + cp * z1;
-  double zc = depth + distance_;
-  if (zc < 0.05) zc = 0.05;
-  const double f = std::min(width(), height()) * 0.55 / zc;
-  // Right-handed view: X right, Y forward, Z up. Qt's y axis points down,
-  // so screen y is negated from the camera-space "up" component.
+  // Orthographic projection: keeps object axes equal-length and mutually
+  // perpendicular on screen, which makes quaternion/Euler orientations easier
+  // to verify visually.
+  const double f = std::min(width(), height()) * 0.55 / std::max(1e-6, distance_);
   return QPointF(width() * 0.5 + target_.x() + x2 * f,
                  height() * 0.5 + target_.y() - up * f);
 }

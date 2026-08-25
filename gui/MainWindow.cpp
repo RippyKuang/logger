@@ -1161,11 +1161,25 @@ void MainWindow::buildFrames() {
       const bool quat = oc->arrays.front().size == 4;
       pf.poses.reserve(nSamples);
       size_t posIdx = 0;
+      size_t orientIdx = 0;
       for (size_t i = 0; i < timeline->size(); i += step) {
         const ArraySample& a = (*timeline)[i];
         double q[4] = {1, 0, 0, 0};
-        if (quat) { q[0] = a[0]; q[1] = a[1]; q[2] = a[2]; q[3] = a[3]; }
-        else eulerToQuat(a[0], a[1], a[2], q);
+        if (hasPos) {
+          // Position and orientation are independent array channels. Resample
+          // the orientation channel at the same timestamp as the position.
+          while (orientIdx + 1 < oc->arrays.size() && oc->arrays[orientIdx + 1].t <= a.t) ++orientIdx;
+          const ArraySample& o = oc->arrays[orientIdx];
+          if (quat) { q[0] = o[0]; q[1] = o[1]; q[2] = o[2]; q[3] = o[3]; }
+          else eulerToQuat(o[0], o[1], o[2], q);
+        } else {
+          if (quat) { q[0] = a[0]; q[1] = a[1]; q[2] = a[2]; q[3] = a[3]; }
+          else eulerToQuat(a[0], a[1], a[2], q);
+        }
+        // Normalize the quaternion so the three body axes stay orthonormal.
+        const double qn = std::sqrt(q[0]*q[0] + q[1]*q[1] + q[2]*q[2] + q[3]*q[3]);
+        if (qn > 1e-12) { for (int k = 0; k < 4; ++k) q[k] /= qn; }
+        else { q[0] = 1.0; q[1] = q[2] = q[3] = 0.0; }
         double x = 0, y = 0, z = 0;
         if (hasPos) {
           while (posIdx + 1 < pc->arrays.size() && pc->arrays[posIdx + 1].t <= a.t) ++posIdx;
