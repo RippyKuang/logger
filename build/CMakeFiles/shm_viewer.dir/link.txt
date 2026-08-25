@@ -1,1 +1,0 @@
-/usr/bin/c++ -O3 -DNDEBUG CMakeFiles/shm_viewer.dir/examples/shm_viewer.cpp.o -o shm_viewer  librtplot_gui.a librtplot_core.a -lrt /usr/lib/x86_64-linux-gnu/libQt5Widgets.so.5.15.13 /usr/lib/x86_64-linux-gnu/libQt5Gui.so.5.15.13 /usr/lib/x86_64-linux-gnu/libQt5Core.so.5.15.13 

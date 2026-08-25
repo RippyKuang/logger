@@ -1,2 +1,0 @@
-/usr/bin/ar qc librtplot_gui.a CMakeFiles/rtplot_gui.dir/gui/PlotWidget.cpp.o CMakeFiles/rtplot_gui.dir/gui/TrajectoryWidget.cpp.o CMakeFiles/rtplot_gui.dir/gui/MainWindow.cpp.o
-/usr/bin/ranlib librtplot_gui.a
