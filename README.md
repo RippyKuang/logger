@@ -99,6 +99,9 @@ cmake --build build_examples -j
 # 离线回放
 ./build/viewer run.db
 
+# 加载示例数据
+./build/viewer --demo
+
 # SHM 实时显示（默认）
 ./build/viewer --source shm --shm-name rtplot_ctrl
 
