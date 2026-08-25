@@ -1,0 +1,11 @@
+@PACKAGE_INIT@
+
+include(CMakeFindDependencyMacro)
+find_dependency(Threads)
+
+if(@RTPLOT_GUI_INSTALLED@)
+  find_dependency(Qt@RTPLOT_QT_MAJOR@ COMPONENTS Widgets)
+endif()
+
+include("${CMAKE_CURRENT_LIST_DIR}/rtplotTargets.cmake")
+check_required_components(rtplot)

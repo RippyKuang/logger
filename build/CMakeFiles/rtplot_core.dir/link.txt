@@ -1,0 +1,2 @@
+/usr/bin/ar qc librtplot_core.a CMakeFiles/rtplot_core.dir/src/logger.cpp.o CMakeFiles/rtplot_core.dir/src/storage.cpp.o CMakeFiles/rtplot_core.dir/src/shm_ipc.cpp.o CMakeFiles/rtplot_core.dir/src/udp.cpp.o CMakeFiles/rtplot_core.dir/src/export.cpp.o
+/usr/bin/ranlib librtplot_core.a

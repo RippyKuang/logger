@@ -1,0 +1,1 @@
+/usr/bin/c++ -O3 -DNDEBUG CMakeFiles/rtplot_example.dir/examples/full_demo.cpp.o -o rtplot_example  librtplot_core.a -lrt 

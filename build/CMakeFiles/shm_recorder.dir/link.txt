@@ -1,0 +1,1 @@
+/usr/bin/c++ -O3 -DNDEBUG CMakeFiles/shm_recorder.dir/examples/shm_recorder.cpp.o -o shm_recorder  librtplot_core.a -lrt 

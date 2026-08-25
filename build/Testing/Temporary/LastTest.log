@@ -1,0 +1,24 @@
+Start testing: Aug 25 14:41 CST
+----------------------------------------------------------
+1/1 Testing: test_core
+1/1 Test: test_core
+Command: "/home/kuang/project/logger/build/test_core"
+Directory: /home/kuang/project/logger/build
+"test_core" start time: Aug 25 14:41 CST
+Output:
+----------------------------------------------------------
+[ring] 1M pushes in 2193 us (2.193 ns/push)
+[storage] write/read/range/index/stats/export OK
+[shm] control table + per-channel SPSC segment OK
+[udp] loopback packet OK
+[logger] macro-style front-end -> background writer -> .db OK
+ALL CORE TESTS PASSED
+<end of output>
+Test time =   0.03 sec
+----------------------------------------------------------
+Test Passed.
+"test_core" end time: Aug 25 14:41 CST
+"test_core" time elapsed: 00:00:00
+----------------------------------------------------------
+
+End testing: Aug 25 14:41 CST
